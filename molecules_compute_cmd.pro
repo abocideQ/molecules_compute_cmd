@@ -20,22 +20,25 @@ SOURCES += \
     ParseX.cpp \
     ParseA.cpp \
     MergeXA.cpp \
+    ComputeQevj.cpp \
     ComputeQ.cpp \
-#    XYModel.cpp \
-#    FileUtils.cpp \
-#    cFileWriter.cpp \
-#    DecimalUtils.cpp \
+#    core/XYModel.cpp \
+#    core/FileUtils.cpp \
+#    core/FileWriter.cpp \
+#    core/DecimalUtils.cpp \
     LongDouble.cpp \
+#    gmp/gmp.cpp \
 
 HEADERS += \
     ParseX.h \
     ParseA.h \
     MergeXA.h \
+    ComputeQevj.h \
     ComputeQ.h \
     XYModel.h \
     FileUtils.h \
     FileWriter.h \
-    /DecimalUtils.h \
+    DecimalUtils.h \
     LongDouble.h \
 
 # Default rules for deployment.
