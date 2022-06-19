@@ -137,76 +137,81 @@ int main(int argc, char *argv[])
         std::cout << "./x_a_Qevj.txt" << endl;
     } else if(type == 2){
         // compute Q
-        //q
-        std::cout << "input: file (example: c:/xxx.txt)" << std::endl;
-        char q_url[1024] = "";
-        std::cin >> q_url;
-        std::cout << std::endl << "input: Te (example: 15000)" << std::endl;
-        char q_Te[1024] = "";
-        std::cin >> q_Te;
-        //const
-        //        std::cout << std::endl << "input: const h (example: 6.63E-34)" << std::endl;
-        //        char const_h[1024] = "";
-        //        std::cin >> const_h;
-        //        std::cout << std::endl << "input: const c (example: 2.99792458E+10)" << std::endl;
-        //        char const_c[1024] = "";
-        //        std::cin >> const_c;
-        //        std::cout << std::endl << "input: const K (example: 1.38E-23)" << std::endl;
-        //        char const_K[1024] = "";
-        //        std::cin >> const_K;
-        std::cout << std::endl << "input: const Tex/Tvib/Tor (example: 15000)" << std::endl;
-        char const_Tsss[1024] = "";
-        std::cin >> const_Tsss;
-        std::cout << std::endl << "input: const gn_even (example: 6)" << std::endl;
-        char const_gne[1024] = "";
-        std::cin >> const_gne;
-        std::cout << std::endl << "input: const gn_odd (example: 3)" << std::endl;
-        char const_gno[1024] = "";
-        std::cin >> const_gno;
-        std::cout << std::endl << "input: const gn_base (example: 1)" << std::endl;
-        char const_gbase[1024] = "";
-        std::cin >> const_gbase;
-        //compute Q
-        ComputeQ m_qCompute = ComputeQ();
-        m_qCompute.init(
-                    ParseX().ParseStr2VJ("segma", std::stof(std::string(q_Te)), q_url), // q_name 名称, q_t 跃迁, q_url 文件
-                    6.63 * pow(10, -34),                   // h 常量
-                    2.99792458 * pow(10, 10),              // c 常量
-                    (1.38 * pow(10, -23)),                 // K 常量
-                    std::stof(std::string(const_Tsss)),    // Tex 常量
-                    std::stof(std::string(const_Tsss)),    // Tvib 常量
-                    std::stof(std::string(const_Tsss)),     // Trot 常量
-                    std::stof(std::string(const_gne)),      // gne   偶数时的值
-                    std::stof(std::string(const_gno)),      // gno   奇数时的值
-                    std::stof(std::string(const_gbase)));   // gbase 倍数
-        //        m_qCompute.init(
-        //                    ParseX().ParseStr2VJ("Q", std::stof(std::string(q_Te)), q_url), // q_name 名称, q_t 跃迁, q_url 文件
-        //                    ENumber(std::string(const_h)),          // h 常量
-        //                    ENumber(std::string(const_c)),          // c 常量
-        //                    ENumber(std::string(const_K)),          // K 常量
-        //                    std::stof(std::string(const_Tsss)),     // Tex 常量
-        //                    std::stof(std::string(const_Tsss)),     // Tvib 常量
-        //                    std::stof(std::string(const_Tsss)),     // Trot 常量
-        //                    std::stof(std::string(const_gne)),      // gne   偶数时的值
-        //                    std::stof(std::string(const_gno)),      // gno   奇数时的值
-        //                    std::stof(std::string(const_gbase)));   // gbase 倍数
-        //        m_qCompute.init(
-        //                    ParseX().ParseStr2VJ("segma", 0, q_url), // q_name 名称, q_t 跃迁, q_url 文件
-        //                    6.63 * pow(10, -34),                   // h 常量
-        //                    2.99792458 * pow(10, 10),              // c 常量
-        //                    15000,                            // K 常量
-        //                    (1.38 * pow(10, -23)),           // Tex 常量
-        //                    (1.38 * pow(10, -23)),           // Tvib 常量
-        //                    (1.38 * pow(10, -23)),           // Trot 常量
-        //                    6,                                     // gne   偶数时的值
-        //                    3,                                     // gno   奇数时的值
-        //                    1);                                    // gbase 倍数
-        m_qCompute.sumQ();
-        QFile file("./Q.txt");
-        file.open(QIODevice::ReadWrite);
-        file.write(m_qCompute.record_string.c_str());
-        file.close();
-        std::cout << "./Q.txt" << endl;
+        long double Q = 0;
+        while(1){
+            //q
+            std::cout << "input: file (example: c:/xxx.txt)" << std::endl;
+            char q_url[1024] = "";
+            std::cin >> q_url;
+            std::cout << std::endl << "input: Te (example: 15000)" << std::endl;
+            char q_Te[1024] = "";
+            std::cin >> q_Te;
+            //const
+            //        std::cout << std::endl << "input: const h (example: 6.63E-34)" << std::endl;
+            //        char const_h[1024] = "";
+            //        std::cin >> const_h;
+            //        std::cout << std::endl << "input: const c (example: 2.99792458E+10)" << std::endl;
+            //        char const_c[1024] = "";
+            //        std::cin >> const_c;
+            //        std::cout << std::endl << "input: const K (example: 1.38E-23)" << std::endl;
+            //        char const_K[1024] = "";
+            //        std::cin >> const_K;
+            std::cout << std::endl << "input: const Tex/Tvib/Tor (example: 15000)" << std::endl;
+            char const_Tsss[1024] = "";
+            std::cin >> const_Tsss;
+            std::cout << std::endl << "input: const gn_even (example: 6)" << std::endl;
+            char const_gne[1024] = "";
+            std::cin >> const_gne;
+            std::cout << std::endl << "input: const gn_odd (example: 3)" << std::endl;
+            char const_gno[1024] = "";
+            std::cin >> const_gno;
+            std::cout << std::endl << "input: const gn_base (example: 1)" << std::endl;
+            char const_gbase[1024] = "";
+            std::cin >> const_gbase;
+            //compute Q
+            ComputeQ m_qCompute = ComputeQ();
+            m_qCompute.init(
+                        ParseX().ParseStr2VJ("segma", std::stof(std::string(q_Te)), q_url), // q_name 名称, q_t 跃迁, q_url 文件
+                        6.63 * pow(10, -34),                   // h 常量
+                        2.99792458 * pow(10, 10),              // c 常量
+                        (1.38 * pow(10, -23)),                 // K 常量
+                        std::stof(std::string(const_Tsss)),    // Tex 常量
+                        std::stof(std::string(const_Tsss)),    // Tvib 常量
+                        std::stof(std::string(const_Tsss)),     // Trot 常量
+                        std::stof(std::string(const_gne)),      // gne   偶数时的值
+                        std::stof(std::string(const_gno)),      // gno   奇数时的值
+                        std::stof(std::string(const_gbase)));   // gbase 倍数
+            //        m_qCompute.init(
+            //                    ParseX().ParseStr2VJ("Q", std::stof(std::string(q_Te)), q_url), // q_name 名称, q_t 跃迁, q_url 文件
+            //                    ENumber(std::string(const_h)),          // h 常量
+            //                    ENumber(std::string(const_c)),          // c 常量
+            //                    ENumber(std::string(const_K)),          // K 常量
+            //                    std::stof(std::string(const_Tsss)),     // Tex 常量
+            //                    std::stof(std::string(const_Tsss)),     // Tvib 常量
+            //                    std::stof(std::string(const_Tsss)),     // Trot 常量
+            //                    std::stof(std::string(const_gne)),      // gne   偶数时的值
+            //                    std::stof(std::string(const_gno)),      // gno   奇数时的值
+            //                    std::stof(std::string(const_gbase)));   // gbase 倍数
+            //        m_qCompute.init(
+            //                    ParseX().ParseStr2VJ("segma", 0, q_url), // q_name 名称, q_t 跃迁, q_url 文件
+            //                    6.63 * pow(10, -34),                   // h 常量
+            //                    2.99792458 * pow(10, 10),              // c 常量
+            //                    15000,                            // K 常量
+            //                    (1.38 * pow(10, -23)),           // Tex 常量
+            //                    (1.38 * pow(10, -23)),           // Tvib 常量
+            //                    (1.38 * pow(10, -23)),           // Trot 常量
+            //                    6,                                     // gne   偶数时的值
+            //                    3,                                     // gno   奇数时的值
+            //                    1);                                    // gbase 倍数
+            Q += m_qCompute.sumQ();
+            QFile file("./Q.txt");
+            file.open(QIODevice::ReadWrite);
+            file.write(m_qCompute.record_string.c_str());
+            file.close();
+            std::cout << "./Q.txt" << endl;
+            std::cout << "total Q=" << Q << endl << endl;
+        }
+
     }
     system("pause");
     return a.exec();
