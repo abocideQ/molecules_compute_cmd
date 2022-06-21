@@ -16,12 +16,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
+    ComputeFai.cpp \
     main.cpp \
     ParseX.cpp \
     ParseA.cpp \
     MergeXA.cpp \
     ComputeQevj.cpp \
     ComputeQ.cpp \
+    ComputeN.cpp \
 #    core/XYModel.cpp \
 #    core/FileUtils.cpp \
 #    core/FileWriter.cpp \
@@ -30,11 +32,13 @@ SOURCES += \
 #    gmp/gmp.cpp \
 
 HEADERS += \
+    ComputeFai.h \
     ParseX.h \
     ParseA.h \
     MergeXA.h \
     ComputeQevj.h \
     ComputeQ.h \
+    ComputeN.h \
     XYModel.h \
     FileUtils.h \
     FileWriter.h \

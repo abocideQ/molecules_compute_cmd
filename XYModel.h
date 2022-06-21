@@ -87,4 +87,12 @@ typedef struct _QReq
     long double gbase;//常量
 } QReq;
 
+typedef struct _NReq
+{
+    long double R;
+    long double P;
+    long double T;
+    long double V;
+} NReq;
+
 #endif
