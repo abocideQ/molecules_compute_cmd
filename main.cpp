@@ -78,7 +78,7 @@ int main(int argc, char *argv[])
         std::cin >> const_gbase;
         //compute x & a & Qevj
         ComputeQevj m_pComputeQevj = ComputeQevj();
-        m_pComputeQevj.init(MergeXA().Merge(ParseX().XVector("deeper", std::stof(std::string(x_1_Te)), x_1_url, "higher", std::stof(std::string(x_2_Te)), x_2_url), ParseA().AVector(a_url)),
+        m_pComputeQevj.init(MergeXA().Merge(ParseX().XVector("deeper", std::stof(std::string(x_1_Te)), x_1_url, "higher", std::stof(std::string(x_2_Te)), x_2_url, 6.63 * pow(10, -34), 2.99792458 * pow(10, 10)), ParseA().AVector(a_url)),
                             6.63 * pow(10, -34),                    // h 常量
                             2.99792458 * pow(10, 10),               // c 常量
                             (1.38 * pow(10, -23)),                  // K 常量
@@ -113,20 +113,20 @@ int main(int argc, char *argv[])
         for(size_t i = 0; i < vec_x.size(); i++){
             XModel x_model = vec_x[i];
             tmp_str += "g'=" + x_model.g1 + ", "
-                    + "v'=" + std::to_string(x_model.v1) + " "
-                    + "j'=" + std::to_string(x_model.j1) + " "
-                    + "e'=" + std::to_string(x_model.e1) + " "
-                    + "t'=" + std::to_string(x_model.t1) + " "
+                    + "v'=" + DecimalUtils::to_string(x_model.v1) + " "
+                    + "j'=" + DecimalUtils::to_string(x_model.j1) + " "
+                    + "e'=" + DecimalUtils::to_string(x_model.e1) + " "
+                    + "t'=" + DecimalUtils::to_string(x_model.t1) + " "
                     + "     "
                     + "g''=" + x_model.g2 + ", "
-                    + "v''=" + std::to_string(x_model.v2) + " "
-                    + "j''=" + std::to_string(x_model.j2) + " "
-                    + "e''=" + std::to_string(x_model.e2) + " "
-                    + "t''=" + std::to_string(x_model.t2) + " "
+                    + "v''=" + DecimalUtils::to_string(x_model.v2) + " "
+                    + "j''=" + DecimalUtils::to_string(x_model.j2) + " "
+                    + "e''=" + DecimalUtils::to_string(x_model.e2) + " "
+                    + "t''=" + DecimalUtils::to_string(x_model.t2) + " "
                     + "     "
-                    + "x= " + std::to_string(x_model.x) + " "
-                    + "a= " + std::to_string(x_model.a) + " "
-                    + "Qvej= " + std::to_string(x_model.Qevj) + " \n\n";
+                    + "x= " + DecimalUtils::to_string(x_model.x) + " "
+                    + "a= " + DecimalUtils::to_string(x_model.a) + " "
+                    + "Qvej= " + DecimalUtils::to_string(x_model.Qevj) + " \n\n";
             std::cout << "." << endl;
         }
 
