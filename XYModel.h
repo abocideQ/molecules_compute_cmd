@@ -45,6 +45,20 @@ typedef struct _XModel//基准 x, y
     long double y;
 } XModel;
 
+typedef struct _FaiModel//曲线数据 高斯分布 等得出
+{
+    long double x;
+    long double y;
+} FaiModel;
+
+
+typedef struct _PlotModel//最终数据 由 曲线数据 & XModel 得出
+{
+    XModel xModel;
+    long double x;
+    long double y;
+} PlotModel;
+
 typedef struct _XAReq
 {
     //x
