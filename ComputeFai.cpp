@@ -6,6 +6,10 @@ std::vector<FaiModel> ComputeFai::compute_fai_gauss(float u, float o, std::vecto
     std::vector<FaiModel> vec_fai = std::vector<FaiModel>();
     for(size_t i = 0; i < vec_x.size(); i++){
 //        vec_fai[]
+        FaiModel *fai_model = new FaiModel();
+        fai_model->x = vec_x[i];
+        fai_model->y = (1 / (o * sqrt(2 * pai))) * DecimalUtils::exp_(-1 * (pow(vec_x[i] - u, 2)) / (2 * pow(o, 2)));
+        vec_fai.push_back(*fai_model);
     }
     return vec_fai;
 }
